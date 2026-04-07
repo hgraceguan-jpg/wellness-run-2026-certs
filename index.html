@@ -672,7 +672,7 @@ function go() {
     load.style.display = 'flex';
     img.onload  = function(){ load.style.display='none'; img.style.display='block'; };
     img.onerror = function(){ load.style.display='none'; err.style.display='flex'; document.getElementById('ce-path').textContent=certUrl; };
-    var certUrl = GITHUB_RAW_BASE + '/certs/' + f.cert;
+    var certUrl = GITHUB_RAW_BASE + '/certs/certs/' + f.cert;
     document.getElementById('ci').src = certUrl;
     document.getElementById('dl').href = certUrl;
     document.getElementById('dl').download = f.name.replace(/\s+/g,'_')+'_WellnessRun2026.jpg';
