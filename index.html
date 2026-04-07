@@ -505,7 +505,7 @@ var P = [
   { key:"Santillan", name:"Maria Shel Santillan", pwd:"Santillan1991", cert:"Santillan.jpg", category:"Igniter" },
   { key:"Sarol", name:"Jasper Ronnie Sarol", pwd:"Sarol1998", cert:"Sarol.jpg", category:"Igniter" },
   { key:"Subillaga", name:"Ephraim Nick Subillaga", pwd:"Subillaga1995", cert:"Subillaga.png", category:"Igniter" },
-  { key:"Taleo", name:"Michelle Angelika Taleño", pwd:"Taleo2002", cert:"Taleo.png", category:"Igniter" },
+  { key:"Taleno", altKeys:["Taleo","Taleño"], name:"Michelle Angelika Taleno", pwd:"Taleno2002", altPwds:["Taleo2002","Taleño2002"], cert:"Taleo.png", category:"Igniter" },
   { key:"Teves", name:"Glazel Mei Anne Teves", pwd:"Teves2000", cert:"Teves.jpg", category:"Igniter" },
   { key:"Tizon", name:"Princess Nicole Tizon", pwd:"Tizon2006", cert:"Tizon.jpg", category:"Igniter" },
   { key:"Torio", name:"Bernadeth Torio", pwd:"Torio1999", cert:"Torio.jpg", category:"Igniter" },
@@ -545,7 +545,7 @@ function go() {
   if (!n || !p) { e.textContent='Please enter your last name and password.'; e.style.display='block'; return; }
   var f = null;
   for (var i=0;i<P.length;i++) {
-    var kNorm=P[i].key.toLowerCase().replace(/\s+/g,''); var nNorm=n.toLowerCase().replace(/\s+/g,''); var pwdOk=P[i].pwd===p||(P[i].altPwds&&P[i].altPwds.includes(p)); if(kNorm===nNorm&&pwdOk){f=P[i];break;}
+    var kNorm=P[i].key.toLowerCase().replace(/\s+/g,''); var nNorm=n.toLowerCase().replace(/\s+/g,''); var keyOk=kNorm===nNorm||(P[i].altKeys&&P[i].altKeys.some(function(ak){return ak.toLowerCase().replace(/\s+/g,'')===nNorm;})); var pwdOk=P[i].pwd===p||(P[i].altPwds&&P[i].altPwds.includes(p)); if(keyOk&&pwdOk){f=P[i];break;}
   }
   if (f) {
     e.style.display='none';
